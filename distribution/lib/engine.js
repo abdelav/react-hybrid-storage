@@ -55,6 +55,8 @@ function removeIdInKey(key, id) {
   }
 }
 
+// TODO: fix this with the appropiate use of return.
+/* eslint-disable */
 function saveToMap(params) {
   var key = params.key,
       id = params.id,
@@ -99,6 +101,7 @@ function saveToMap(params) {
   this.setItem('map_' + currentIndex, data);
   this.setItem('map', (0, _stringify2.default)(core));
 }
+/* eslint-enable */
 
 function lookupGlobalItem(params) {
   var _this = this;

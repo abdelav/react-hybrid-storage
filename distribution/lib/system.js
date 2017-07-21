@@ -119,7 +119,9 @@ function getBatchDataWithIds(params) {
         resolve: resolve,
         reject: reject
       });
-    }).then(function (data) {
+    }).then(function () {
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
       return results.map(function (value) {
         return value.syncId ? data.shift() : value;
       });
@@ -127,6 +129,8 @@ function getBatchDataWithIds(params) {
   });
 }
 
+// TODO: fix this with the appropiate use of return.
+/* eslint-disable */
 function remove(params) {
   var _this4 = this;
 
@@ -158,6 +162,7 @@ function remove(params) {
     }
   });
 }
+/* eslint-enable */
 
 function load(params) {
   var _this5 = this;
