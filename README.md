@@ -1,7 +1,6 @@
 # react-hybrid-storage [![Build Status](https://travis-ci.org/dnamic/react-hybrid-storage.svg?branch=master)](https://travis-ci.org/dnamic/react-hybrid-storage)
 
-A local storage wrapper for both react-native([AsyncStorage](https://facebook.github.io/react-native/docs/asyncstorage.html)) and browser([localStorage](https://developer.mozilla.org/es/docs/Web/API/Window/localStorage)). Support size controlling, auto expiring, remote data auto syncing and getting batch data in one query.
-
+A local storage wrapper for both react-native([AsyncStorage](https://facebook.github.io/react-native/docs/asyncstorage.html)) and browser([localStorage](https://developer.mozilla.org/es/docs/Web/API/Window/localStorage)).
 ## Features
 
 - Promise based for async load.
@@ -18,7 +17,7 @@ in react-native environment require react-native version >= 0.13
   
 ## Usage
 
-### Import
+#### Import
 
 ```js
 import Storage from 'react-hybrid-storage';
