@@ -143,7 +143,7 @@ function loadGlobalItem(params) {
     if (autoSync && this.sync[key]) {
       if (syncInBackground) {
         this.sync[key]({ syncParams: syncParams });
-        return _promise2.default.resolve(writebleRet.rawData);
+        return _promise2.default.resolve(writebleRet.data);
       }
       return new _promise2.default(function (resolve, reject) {
         return _this2.sync[key]({ resolve: resolve, reject: reject, syncParams: syncParams });
@@ -151,7 +151,7 @@ function loadGlobalItem(params) {
     }
     return _promise2.default.reject(new _error.ExpiredError((0, _stringify2.default)(params)));
   }
-  return _promise2.default.resolve(writebleRet.rawData);
+  return _promise2.default.resolve(writebleRet.data);
 }
 
 function noItemFound(params) {
@@ -185,7 +185,6 @@ function loadMapItem(params) {
       syncParams = params.syncParams;
 
   var now = new Date().getTime();
-
   if (ret === null || ret === undefined) {
     return this.noItemFound(params);
   }
@@ -201,7 +200,7 @@ function loadMapItem(params) {
     if (autoSync && this.sync[key]) {
       if (syncInBackground) {
         this.sync[key]({ id: id, syncParams: syncParams });
-        return _promise2.default.resolve(ret.rawData);
+        return _promise2.default.resolve(ret.data);
       }
       return new _promise2.default(function (resolve, reject) {
         return _this4.sync[key]({ id: id, resolve: resolve, reject: reject, syncParams: syncParams });
@@ -213,7 +212,7 @@ function loadMapItem(params) {
     }
     return _promise2.default.reject(new _error.ExpiredError((0, _stringify2.default)(params)));
   }
-  return _promise2.default.resolve(ret.rawData);
+  return _promise2.default.resolve(ret.data);
 }
 
 function lookUpInMap(params) {
@@ -231,7 +230,7 @@ function lookUpInMap(params) {
 
   if (core[newId] !== undefined) {
     return this.getItem('map_' + core[newId]).then(function (ret) {
-      return _this5._loadMapItem((0, _extends3.default)({ ret: ret }, params));
+      return _this5.loadMapItem((0, _extends3.default)({ ret: ret }, params));
     });
   }
   return this.noItemFound((0, _extends3.default)({ ret: undefined }, params));

@@ -82,6 +82,7 @@ function save(params) {
       return _this.saveToMap({ key: key, id: id, data: dataToSave });
     });
   }
+
   return infoToReturn;
 }
 
@@ -191,7 +192,7 @@ function clearMap() {
 function clearMapForKey(key) {
   var _this7 = this;
 
-  return this._mapPromise.then(function () {
+  return this.mapPromise.then(function () {
     var tasks = (_this7.core.__keys__[key] || []).map(function (id) {
       return _this7.remove({ key: key, id: id });
     });

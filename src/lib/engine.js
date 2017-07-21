@@ -26,6 +26,8 @@ export function removeIdInKey (key : string, id : string) : void {
   }
 }
 
+// TODO: fix this with the appropiate use of return.
+/* eslint-disable */
 export function saveToMap (params : Object) {
   const { key, id, data } = params;
   const newId = this.getId(key, id);
@@ -67,6 +69,7 @@ export function saveToMap (params : Object) {
   this.setItem(`map_${currentIndex}`, data);
   this.setItem('map', JSON.stringify(core));
 }
+/* eslint-enable */
 
 export function lookupGlobalItem (params : Object) {
   const { key } = params;

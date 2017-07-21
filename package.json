@@ -1,13 +1,16 @@
 {
   "name": "react-hybrid-storage",
-  "version": "0.0.0",
+  "version": "0.0.0-development",
   "description": "A local storage wrapper for both react-native(AsyncStorage) and browser(localStorage). Support size controlling, auto expiring, remote data auto syncing and getting batch data in one query.",
   "main": "./distribution/index.js",
   "scripts": {
+    "commit": "git-cz",
     "flow": "flow",
     "lint": "eslint .",
     "test": "jest",
-    "build": "babel --no-babelrc src/ --out-dir distribution/ --presets=es2015,stage-0 --plugins=transform-runtime,transform-object-rest-spread,transform-flow-strip-types"
+    "build": "babel --no-babelrc src/ --out-dir distribution/ --presets=es2015,stage-0 --plugins=transform-runtime,transform-object-rest-spread,transform-flow-strip-types",
+    "prepublish": "npm run build",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "jest": {
     "verbose": true,
@@ -27,7 +30,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dnamic/react-hybrid-storage.git"
+    "url": "https://github.com/dnamic/react-hybrid-storage.git"
   },
   "keywords": [
     "react-native",
@@ -54,13 +57,19 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-stage-0": "^6.24.1",
+    "commitizen": "^2.9.6",
+    "cz-conventional-changelog": "^2.0.0",
     "eslint": "^4.1.1",
     "flow-bin": "^0.49.1",
     "jest": "^20.0.2",
-    "jest-cli": "^20.0.4"
+    "jest-cli": "^20.0.4",
+    "semantic-release": "^6.3.6"
   },
   "engines": {
     "node": "8.x",
     "npm": "5.x"
+  },
+  "czConfig": {
+    "path": "node_modules/cz-conventional-changelog"
   }
 }

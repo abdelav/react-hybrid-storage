@@ -19,7 +19,9 @@ var _engine = require('./lib/engine');
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Modules
-var Storage = function Storage() {
+var Storage =
+// Types
+function Storage() {
   var _this = this;
 
   var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -49,7 +51,8 @@ var Storage = function Storage() {
   }
 
   this.mapPromise = this.getItem('map').then(function (map) {
-    _this.core = _this.checkMap(map && JSON.parse(map) || {});
+    var mapObj = map && JSON.parse(map) || {};
+    _this.core = _this.checkMap(mapObj);
   });
 };
 
@@ -71,7 +74,11 @@ var Storage = function Storage() {
   loadMapItem: _engine.loadMapItem,
   lookUpInMap: _engine.lookUpInMap,
   remove: _system.remove,
-  load: _system.load
+  load: _system.load,
+  getIdsForKey: _system.getIdsForKey,
+  getAllDataForKey: _system.getAllDataForKey,
+  clearMapForKey: _system.clearMapForKey,
+  clearMap: _system.clearMap
 });
 
 exports.default = Storage;

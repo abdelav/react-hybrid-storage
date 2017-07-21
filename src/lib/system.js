@@ -72,12 +72,14 @@ export function getBatchDataWithIds (params : Object) : Promise<any> {
         resolve,
         reject,
       });
-    }).then((data) => {
+    }).then((data = []) => {
       return results.map((value) => value.syncId ? data.shift() : value);
     });
   });
 }
 
+// TODO: fix this with the appropiate use of return.
+/* eslint-disable */
 export function remove (params : Object) : Promise<any> {
   return this.mapPromise.then(() => {
     const { key, id } = params;
@@ -105,6 +107,7 @@ export function remove (params : Object) : Promise<any> {
     }
   });
 }
+/* eslint-enable */
 
 export function load (params : Object) : Promise<any> {
   const { key, id, autoSync = true, syncInBackground = true, syncParams } = params;

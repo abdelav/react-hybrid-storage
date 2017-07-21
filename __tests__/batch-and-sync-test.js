@@ -204,7 +204,7 @@ describe('react-native-storage: batch and sync test', () => {
       // Instantly load
       return storage.getBatchDataWithIds({
         key : testKey,
-        ids : [testId1, testId2, testId3]
+        ids : [testId1, testId2, testId3],
       }).then(ret => {
         expect(ret[0]).toBe(testData1);
         expect(ret[1]).toBe(testData2);
