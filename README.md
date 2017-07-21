@@ -13,7 +13,7 @@ A local storage wrapper for both react-native([AsyncStorage](https://facebook.gi
 
 in react-native environment require react-native version >= 0.13
 
-	npm install react-native-storage --save OR yarn add react-native-storage
+	npm install react-hybrid-storage --save OR yarn add react-hybrid-storage
   
 ## Usage
 
@@ -23,12 +23,12 @@ in react-native environment require react-native version >= 0.13
 import Storage from 'react-hybrid-storage';
 ```  
 
-Do not use `require('react-native-storage')`, which would cause error in react-native version >= 0.16.
+Do not use `require('react-hybrid-storage')`, which would cause error in react-native version >= 0.16.
 
 #### Init
 
 ```js
-import Storage from 'react-native-storage';
+import Storage from 'react-hybrid-storage';
 import { AsyncStorage } from 'react-native'; // Don't import if the target is web
 
 const storage = new Storage({
