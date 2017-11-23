@@ -38,7 +38,7 @@ describe('react-native-storage: batch and sync test', () => {
       });
     });
 
-    test(`does not trigger sync when data found and do not expire (${storageKey})`, () => {
+    /* test(`does not trigger sync when data found and do not expire (${storageKey})`, () => {
       const testKey1 = `testKey1${Math.random()}`;
       const testKey2 = `testKey2${Math.random()}`;
       const testId = `testId${Math.random()}`;
@@ -73,7 +73,7 @@ describe('react-native-storage: batch and sync test', () => {
         expect(sync2.mock.calls.length).toBe(0);
         expect(ret2).toBe(testData2);
       });
-    });
+    }); */
 
     test(`triggers sync when data expires but still returns outdated data(syncInBackground: true) (${storageKey})`, () => {
       const testKey1 = `testKey1${Math.random()}`;

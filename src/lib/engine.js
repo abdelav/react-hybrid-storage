@@ -1,7 +1,7 @@
 // @flow
 
 // Modules
-import { NotFoundError, ExpiredError } from '../helpers/error';
+import { NotFoundError } from '../helpers/error';
 
 export function initMap () : Object {
   return {
@@ -81,7 +81,6 @@ export function lookupGlobalItem (params : Object) {
 
 export function loadGlobalItem (params : Object) {
   const { key, ret, autoSync, syncInBackground, syncParams } = params;
-  const now = new Date().getTime();
   let writebleRet = ret;
 
   if (writebleRet === null || writebleRet === undefined) {
@@ -98,15 +97,12 @@ export function loadGlobalItem (params : Object) {
     }
   }
 
-  if (writebleRet.expires < now) {
-    if (autoSync && this.sync[key]) {
-      if (syncInBackground) {
-        this.sync[key]({ syncParams });
-        return Promise.resolve(writebleRet.data);
-      }
-      return new Promise((resolve, reject) => this.sync[key]({ resolve, reject, syncParams }));
+  if (autoSync && this.sync[key]) {
+    if (syncInBackground) {
+      this.sync[key]({ syncParams });
+      return Promise.resolve(writebleRet.data);
     }
-    return Promise.reject(new ExpiredError(JSON.stringify(params)));
+    return new Promise((resolve, reject) => this.sync[key]({ resolve, reject, syncParams }));
   }
   return Promise.resolve(writebleRet.data);
 }
@@ -124,7 +120,6 @@ export function noItemFound (params : Object) {
 
 export function loadMapItem (params : Object) {
   const { ret, key, id, autoSync, batched, syncInBackground, syncParams } = params;
-  const now = new Date().getTime();
   if (ret === null || ret === undefined) {
     return this.noItemFound(params);
   }
@@ -136,20 +131,18 @@ export function loadMapItem (params : Object) {
     }
   }
 
-  if (ret.expires < now) {
-    if (autoSync && this.sync[key]) {
-      if (syncInBackground) {
-        this.sync[key]({ id, syncParams });
-        return Promise.resolve(ret.data);
-      }
-      return new Promise((resolve, reject) => this.sync[key]({ id, resolve, reject, syncParams }));
+  if (autoSync && this.sync[key]) {
+    if (syncInBackground) {
+      this.sync[key]({ id, syncParams });
+      return Promise.resolve(ret.data);
     }
-
-    if (batched) {
-      return Promise.resolve({ syncId : id });
-    }
-    return Promise.reject(new ExpiredError(JSON.stringify(params)));
+    return new Promise((resolve, reject) => this.sync[key]({ id, resolve, reject, syncParams }));
   }
+
+  if (batched) {
+    return Promise.resolve({ syncId : id });
+  }
+
   return Promise.resolve(ret.data);
 }
 

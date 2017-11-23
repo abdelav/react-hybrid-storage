@@ -22,9 +22,8 @@ export function removeItem (key : string) : Promise<any> {
 }
 
 export function save (params : Object) : Promise<any> {
-  const { key, id, data, expires = this.defaultExpires } = params;
-  const now = new Date().getTime();
-  let dataToSave = { data,  expires : now + expires };
+  const { key, id, data } = params;
+  let dataToSave = { data };
   let infoToReturn;
 
   if (key.toString().indexOf('_') !== -1) {

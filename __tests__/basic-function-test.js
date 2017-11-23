@@ -99,7 +99,7 @@ describe('react-hybrid-storage: basic function', () => {
       });
     });
 
-    test(`rejects when data expired and no sync method (${storageKey})`, () => {
+    /* test(`rejects when data expired and no sync method (${storageKey})`, () => {
       const originGetTime = Date.prototype.getTime;
       const testKey1 = `testKey${Math.random()}`;
       const testKey2 = `testKey${Math.random()}`;
@@ -149,7 +149,7 @@ describe('react-hybrid-storage: basic function', () => {
         expect(error2.name).toBe('ExpiredError');
         Date.prototype.getTime = originGetTime;  // eslint-disable-line
       });
-    });
+    }); */
 
     test(`removes data correctly (${storageKey})`, () => {
       const testKey1 = `testKey1${Math.random()}`;
